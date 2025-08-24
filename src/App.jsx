@@ -45,11 +45,14 @@ function App() {
   };
 
   return (
-    <Container maxWidth="md" sx={{py: 4}}  >
+    <Container maxWidth="lg" sx={{py: 4}}>
       <Typography className="heading" variant="h3" component="h1" gutterBottom>
         Email Reply Generator
       </Typography>
-      <Box sx={{mx: 4}}>
+      <Box
+        sx={{mx: 4}}
+        style={{alignItems: "center", display: "flex", flexDirection: "column"}}
+      >
         <TextField
           fullWidth
           multiline
@@ -74,18 +77,53 @@ function App() {
             <MenuItem value={"casual"}>Casual</MenuItem>
           </Select>
         </FormControl>
-        <Button
-          variant="contained"
+        <button
+          className="cssbuttons-io-button"
           onClick={handleSubmit}
           disabled={!emailContent || loading}
-          fullWidth
+          style={{
+            width: "50%",
+            padding: "12px",
+            justifyContent: "center",
+            textAlign: "center",
+            gap: "8px",
+            fontSize: "1.1rem",
+            background: "#de87f6ff",
+            color: "#000000ff",
+            border: "none",
+            borderRadius: "20px",
+            cursor: !emailContent || loading ? "not-allowed" : "pointer",
+            opacity: !emailContent || loading ? 0.6 : 1,
+            display: "flex",
+            alignItems: "center",
+          }}
         >
-          {loading ? <CircularProgress size={24} /> : "Generate Reply"}
-        </Button>
-        {error && (
-          <div className="error-message">{error}</div>
-        )}
+          {loading ? (
+            <CircularProgress
+              size={24}
+              style={{color: "#fff", marginRight: "8px"}}
+            />
+          ) : null}
+          Get started
+          <div className="icon" style={{marginLeft: "8px"}}>
+            <svg
+              height="24"
+              width="24"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path
+                d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
+        </button>
+
         
+
+        {error && <div className="error-message">{error}</div>}
       </Box>
       {generatedReply && (
         <Box sx={{mt: 3}}>
