@@ -1,6 +1,5 @@
 # React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is an email replier using gemini api it fetch the content and generate an reply for user
 
 Currently, two official plugins are available:
 
